@@ -8,7 +8,7 @@
                     <img class="user-logo" src="../../../static/img/img.jpeg">
                     {{user.nickname}}
                 </span>
-                    <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-menu slot="dropdown" style="margin: 0px;">
                         <el-dropdown-item command="userInfo">个人信息</el-dropdown-item>
                         <el-dropdown-item command="changePassword">修改密码</el-dropdown-item>
                         <el-dropdown-item command="loginout">退出</el-dropdown-item>
@@ -149,7 +149,8 @@
     }
     .user-info {
         float: right;
-        padding-right: 50px;
+        padding-top: 15px;
+        padding-right: 25px;
         font-size: 16px;
         color: #fff;
     }
@@ -162,12 +163,11 @@
         vertical-align: middle;
     }
     .user-info .user-logo{
-        position: absolute;
         left:0;
-        top:15px;
         width:40px;
         height:40px;
         border-radius: 50%;
+
     }
     .el-dropdown-menu__item{
         text-align: center;
