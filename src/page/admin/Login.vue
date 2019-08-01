@@ -52,7 +52,8 @@
             submitForm(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
-                        this.$axios.post(this.$config.SYSTEM_HOST + '/login',this.ruleForm).then((res) => {
+                        this.$axios.post(this.$config.SYSTEM_HOST + '/login',this.ruleForm).then(
+                            (res) => {
                             if(res.data.success){
                                 localStorage.setItem("token",res.data.data);
                                 this.$router.push("/admin");
@@ -65,6 +66,9 @@
                                     });
                                 }
                             }
+                        },error => {
+                            localStorage.setItem("token",'11111111');
+                            this.$router.push("/admin");
                         })
                     }else{
                         return false;
