@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd581da9-ca67-4675-a8e3-7f7ac5ee3e01" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/common/Header.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/common/Header.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/page/admin/dict/DictDetailManager.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/page/admin/dict/DictDetailManager.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,8 +67,16 @@
       <workItem from="1564644270320" duration="948000" />
       <workItem from="1564645566127" duration="86000" />
       <workItem from="1564651786179" duration="1139000" />
-      <workItem from="1564663102437" duration="710000" />
+      <workItem from="1564663102437" duration="3413000" />
     </task>
+    <task id="LOCAL-00001" summary="up">
+      <created>1564663900765</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1564663900765</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -88,5 +94,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="up" />
+    <option name="LAST_COMMIT_MESSAGE" value="up" />
   </component>
 </project>

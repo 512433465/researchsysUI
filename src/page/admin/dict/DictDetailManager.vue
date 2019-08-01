@@ -63,10 +63,10 @@
         <el-dialog title="编辑字典明细" :visible.sync="editDialogVisible" size="small">
             <el-form label-width="80px">
                 <el-form-item label="明细名称">
-                    <el-input v-model="updateform.name"></el-input>
+                    <el-input v-model="form.name"></el-input>
                 </el-form-item>
                 <el-form-item label="明细值">
-                    <el-input v-model="updateform.code"></el-input>
+                    <el-input v-model="form.code"></el-input>
                 </el-form-item>
                 <el-form-item>
                     <el-button type="primary" @click="handleSubmit">保存编辑</el-button>
@@ -86,9 +86,13 @@
                 dictTypeData: [],
                 totalCount:0,
                 query : {},
-                form: {},
                 errors:{},
-                updateform:{},
+                form:{
+                    id : '',
+                    code:'',
+                    name: '',
+                    type_id:'',
+                },
                 currentTypeId:'',
                 addDialogVisible: false,
                 multipleSelection: [],
@@ -139,21 +143,21 @@
                 this.$objectUtils.clear(this.errors);
                 this.$axios.get(this.$config.SYSTEM_HOST + "/dict_detail?id=" + this.currentRow.id).then((res) => {
                     this.$responseUtils.handlerError(res);
-                    this.updateform = res.data.data;
+                    this.form = res.data.data;
                 });
                 this.editDialogVisible = true;
             },
             //展示添加页面
             showAdd(){
                 this.$objectUtils.clear(this.errors);
-                this.$objectUtils.clear(this.updateform);
-                this.updateform.typeId = this.form.typeId;
+                this.$objectUtils.clear(this.form);
+                this.form.typeId = this.form.typeId;
                 this.addDialogVisible = true;
             },
             //修改和添加
             handleSubmit() {
                 //this.$message.error("请先选择数据字典类型!");
-                if(this.updateform.id){
+                if(this.form.id){
                     this.$axios.put(this.$config.SYSTEM_HOST + "/dict_detail/" ,this.form).then((res) => {
                         if(res.data.success){
                             this.editDialogVisible = false;
