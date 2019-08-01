@@ -9,7 +9,7 @@
                     :value="item.name">
                 </el-option>
             </el-select>
-            <el-select  v-model="query.college" placeholder="所属学院"  @change="collegeSelectChange(query.college)" style=" height: 36px;" size="small">
+            <el-select  v-model="query.college" placeholder="所属科室"  @change="collegeSelectChange(query.college)" style=" height: 36px;" size="small">
                 <el-option
                     v-for="item in college"
                     :key="item.code"
@@ -17,7 +17,7 @@
                     :value="item.name">
                 </el-option>
             </el-select>
-            <el-select  v-model="query.subject" placeholder="学科"  @change="subjectSelectChange(query.subject)"style=" height: 36px;"  size="small">
+            <el-select  v-model="query.subject" placeholder="研究方向"  @change="subjectSelectChange(query.subject)"style=" height: 36px;"  size="small">
                 <el-option
                     v-for="item in subject"
                     :key="item.code"
@@ -821,16 +821,20 @@
             },
             //加载下拉框
             initSelect(){
+                //项目等级
                 this.$axios.get(this.$config.SYSTEM_HOST + "/dict_type/query?code=PROJECTLEVEL").then((res) => {
                     this.level = res.data.data.rows[0].dataDictDetails;
                 });
-                this.$axios.get(this.$config.SYSTEM_HOST + "/dict_type/query?code=COLLEGE").then((res) => {
+                //所属科室
+                this.$axios.get(this.$config.SYSTEM_HOST + "/dict_type/query?code=DEPART").then((res) => {
                     this.college = res.data.data.rows[0].dataDictDetails;
                 });
+                //研究方向
                 this.$axios.get(this.$config.SYSTEM_HOST + "/dict_type/query?code=ACHIEVEMENTTYPE").then((res) => {
                     this.achievementType = res.data.data.rows[0].dataDictDetails;
                 });
-                this.$axios.get(this.$config.SYSTEM_HOST + "/dict_type/query?code=SUBJECT").then((res) => {
+                //成果类型
+                this.$axios.get(this.$config.SYSTEM_HOST + "/dict_type/query?code=PROJECTTYPE").then((res) => {
                     this.subject = res.data.data.rows[0].dataDictDetails;
                 });
             },
