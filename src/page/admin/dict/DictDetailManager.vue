@@ -117,7 +117,7 @@
             showDelete() {
                 this.$tableUtils.isSelected(this.currentRow);
                 this.$objectUtils.clear(this.errors);
-                this.$confirm(<p>你确定要删除<span style="color: red;">{this.currentRow.name}</span>?</p>, '提示', {
+                this.$confirm("<p>你确定要删除<span style='color: red;'>{this.currentRow.name}</span>?</p>", '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
                     type: 'warning'

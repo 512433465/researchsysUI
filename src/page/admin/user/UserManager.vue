@@ -71,6 +71,37 @@
                 <el-form-item label="密码" :error="errors.password">
                     <el-input v-model="form.password" type="password"></el-input>
                 </el-form-item>
+
+                <el-form-item label="身份证号" :error="errors.card">
+                    <el-input v-model="form.card"></el-input>
+                </el-form-item>
+                <el-form-item label="手机号" :error="errors.phone">
+                    <el-input v-model="form.phone"></el-input>
+                </el-form-item>
+                <el-form-item label="姓名" :error="errors.realName">
+                    <el-input v-model="form.realName"></el-input>
+                </el-form-item>
+                <el-form-item label="性别" :error="errors.sex">
+                    <el-radio v-model="form.sex" label="1">男</el-radio>
+                    <el-radio v-model="form.sex" label="0">女</el-radio>
+                </el-form-item>
+                <el-form-item label="科室部门" :error="errors.college">
+                    <el-input v-model="form.college"></el-input>
+                </el-form-item>
+                <el-form-item label="职位" :error="errors.administrative_position">
+                    <el-input v-model="form.administrative_position"></el-input>
+                </el-form-item>
+                <el-form-item label="生日" :error="errors.birthday">
+                    <el-input v-model="form.birthday"></el-input>
+                </el-form-item>
+                <el-form-item label="学历" :error="errors.degree">
+                    <el-input v-model="form.degree"></el-input>
+                </el-form-item>
+                <el-form-item label="民族" :error="errors.nation">
+                    <el-input v-model="form.nation"></el-input>
+                </el-form-item>
+
+
                 <el-form-item>
                     <el-button type="primary" @click="handleSave">立即创建</el-button>
                     <el-button @click="addDogVis = false">取消</el-button>
@@ -80,8 +111,40 @@
         <el-dialog title="编辑用户" :visible.sync="editDogVis" size="small">
             <el-form label-width="80px">
                 <el-form-item label="用户名">
-                    <el-input v-model="form.userName" disabled></el-input>
+                    <el-input v-model="form.userName" ></el-input>
                 </el-form-item>
+
+                <el-form-item label="身份证号" :error="errors.card">
+                    <el-input v-model="form.card"></el-input>
+                </el-form-item>
+                <el-form-item label="手机号" :error="errors.phone">
+                    <el-input v-model="form.phone"></el-input>
+                </el-form-item>
+                <el-form-item label="姓名" :error="errors.realName">
+                    <el-input v-model="form.realName"></el-input>
+                </el-form-item>
+                <el-form-item label="性别" :error="errors.sex">
+                    <el-radio v-model="form.sex" label="1">男</el-radio>
+                    <el-radio v-model="form.sex" label="0">女</el-radio>
+                </el-form-item>
+                <el-form-item label="科室部门" :error="errors.college">
+                    <el-input v-model="form.college"></el-input>
+                </el-form-item>
+                <el-form-item label="职位" :error="errors.administrative_position">
+                    <el-input v-model="form.administrative_position"></el-input>
+                </el-form-item>
+                <el-form-item label="生日" :error="errors.birthday">
+                    <el-input v-model="form.birthday"></el-input>
+                </el-form-item>
+                <el-form-item label="学历" :error="errors.degree">
+                    <el-input v-model="form.degree"></el-input>
+                </el-form-item>
+                <el-form-item label="民族" :error="errors.nation">
+                    <el-input v-model="form.nation"></el-input>
+                </el-form-item>
+
+
+
                 <el-form-item>
                     <el-button type="primary" @click="handleSave">保存编辑</el-button>
                     <el-button @click="editDogVis = false">取消</el-button>
@@ -158,12 +221,30 @@
                     password:'',
                     password2:'',
                     type:[],
+                    card:'',
+                    phone:'',
+                    realName:'',
+                    college:'',
+                    administrative_position:'',
+                    birthday:'',
+                    degree:'',
+                    nation:'',
+                    sex:'',
                     region:''
                 },
                 errors: {
                     name: '',
                     password:'',
                     password2:'',
+                    card:'',
+                    phone:'',
+                    realName:'',
+                    college:'',
+                    administrative_position:'',
+                    birthday:'',
+                    degree:'',
+                    nation:'',
+                    sex:'',
                     region:''
                 },
                 addDogVis: false,
@@ -228,9 +309,9 @@
             handleStatus(row){
                 var msg = '';
                 if(row.status == '1'){
-                    msg = <p>此操作会将<span style="color: red;">{row.name}</span>启用,你确定?</p>;
+                    msg ='<p>此操作会将<span style="color: red;">{row.name}</span>启用,你确定?</p>';
                 }else{
-                    msg = <p>此操作会将<span style="color: red;">{row.name}</span>禁用,你确定?</p>;
+                    msg ='<p>此操作会将<span style="color: red;">{row.name}</span>禁用,你确定?</p>' ;
                 }
                 this.$confirm(msg, '提示', {
                     confirmButtonText: '确定',
@@ -268,23 +349,12 @@
                     for(var i = 0; i < this.notHideRolePermission.length; i++) {
                         console.log(node);
                         if(this.notHideRolePermission[i] == data.id) {
-                            return (
-                                <span>
-                                <span>
-                                <span style="color:#FF4949">{node.label}</span>
-                            </span>
-                            </span>
+                            return ("<span><span><span style='color:#FF4949'>{node.label}</span></span></span>"
                         );
                         }
                     }
                 }
-                return (
-                    <span>
-                    <span>
-                    <span>{node.label}</span>
-                </span>
-                </span>
-                 );
+                return ("<span><span><span>{node.label}</span></span></span>");
             },
             nodeChange(obj,isChecked,isChildChecked){
                 if(isChecked){
@@ -385,7 +455,7 @@
             },
             showDelete() {
                 this.$tableUtils.isSelected(this.currentRow);
-                this.$confirm(<p>你确定要删除<span style="color: red;">{this.currentRow.userName}</span>?</p>, '提示', {
+                this.$confirm("<p>你确定要删除<span style='color: red;'>{this.currentRow.userName}</span>?</p>", '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
                     type: 'warning'
@@ -405,7 +475,7 @@
             handleSave() {
                 if(this.form.id){
                     this.$objectUtils.clear(this.errors);
-                    this.$axios.put(this.$config.ACCOUNT_HOST + "/user",this.form).then((res) => {
+                    this.$axios.put(this.$config.SYSTEM_HOST + "/user",this.form).then((res) => {
                         this.$responseUtils.handlerError(res);
                         this.editDogVis = false;
                         this.handleQuery();
